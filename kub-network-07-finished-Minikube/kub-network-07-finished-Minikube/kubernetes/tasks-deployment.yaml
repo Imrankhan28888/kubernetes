@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tasks-deployment
+  namespace: webapp
 spec:
   replicas: 1
   selector: 
@@ -14,10 +15,10 @@ spec:
     spec:
       containers:
         - name: tasks
-          image: imrankhan28888/kub-demo-tasks:latest
+          image: imrankhan28888/kub-demo-tasks:latestwebapp
           env:
             - name: AUTH_ADDRESS
               # value: "10.99.104.252"
-              value: "auth-service.default"
+              value: "auth-service.webapp"
             - name: TASKS_FOLDER
               value: tasks

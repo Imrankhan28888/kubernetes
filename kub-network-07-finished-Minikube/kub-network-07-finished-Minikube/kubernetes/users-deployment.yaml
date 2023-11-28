@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: users-deployment
+  namespace: webapp
 spec:
   replicas: 1
   selector: 
@@ -14,8 +15,8 @@ spec:
     spec:
       containers:
         - name: users
-          image: imrankhan28888/kub-demo-users:latest
+          image: imrankhan28888/kub-demo-users:latestwebapp
           env:
             - name: AUTH_ADDRESS
               # value: "10.99.104.252"
-              value: "auth-service.default"
+              value: "auth-service.webapp"
